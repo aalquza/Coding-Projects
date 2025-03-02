@@ -1,24 +1,21 @@
-// Import utility functions or other necessary modules
-const { MongoClient } = require('mongodb');
-const validateEmail = require('../utils/validateEmail'); // Assuming you have a validateEmail function
+const { getDB } = require('../utils/db'); // Import getDB from db.js
+const validateEmail = require('../utils/validateEmail'); // Import the validateEmail function
 
 async function submitForm(req, res) {
-    const { firstName, lastName, email, phone, question } = req.body;
+    const { firstName, lastName, email, question } = req.body; // Remove phone from here
 
-    // Validate email before inserting data
+    // Use the validateEmail function to check if the email is valid
     if (!validateEmail(email)) {
         return res.status(400).json({ error: 'Invalid email address' });
     }
 
-    // Logic to connect to MongoDB and insert data
     try {
-        const client = new MongoClient(process.env.MONGO_URI);
-        await client.connect();
-        const database = client.db('Website');
-        const collection = database.collection('submissions');
+        const db = getDB(); // Use getDB() to get the database connection
+        const collection = db.collection('submissions');
 
-        const result = await collection.insertOne({ firstName, lastName, email, phone, question });
-        res.status(201).json({ message: 'Form submitted successfully', id: result.insertedId });
+        // Insert the form data into the 'submissions' collection, without phone
+        const result = await collection.insertOne({ firstName, lastName, email, question });
+        res.status(201).json({ message: 'Thanks! I have recieved your message!', id: result.insertedId });
     } catch (error) {
         console.error("Error inserting document:", error);
         res.status(500).json({ error: 'Database error' });
@@ -26,3 +23,6 @@ async function submitForm(req, res) {
 }
 
 module.exports = { submitForm };
+
+
+

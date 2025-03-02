@@ -29,7 +29,7 @@ const Projects = React.forwardRef((props, ref) =>  {
       <motion.div variants = {promptMotion} initial = "initial" animate = "animate" className = "flex flex-col items-center gap-3"> 
         <div className = "flex flex-col items-center gap-[10vh]">
             <div className = "font-poppins text-tan text-[2rem] md:text-[4rem] font-semibold text-center">Ask Me Anything...</div>
-            <UserPrompt showIcon={true} className = "max-w-200 w-[80vw]">User Prompt...</UserPrompt>
+            <UserPrompt showIcon={true} className = "max-w-200 w-[80vw]">Ask Anything... </UserPrompt>
         </div>
         <RotatingText/>
       </motion.div>

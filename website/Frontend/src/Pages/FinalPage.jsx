@@ -37,11 +37,10 @@ export default function FinalPage() {
                     className="fixed top-0 left-0 w-full z-50 lg:hidden"
                 />
 
-                <AboutMe ref={aboutRef} />  {/* Correct: ref */}
-                <Skills ref={skillsRef} />    {/* Correct: ref */}
-                <Projects ref={projectsRef} />  {/* Correct: ref */}
-                <ContactMe ref={contactRef} />  {/* Correct: ref */}
-
+                <AboutMe ref={aboutRef} /> 
+                <Skills ref={skillsRef} />    
+                <Projects ref={projectsRef} />  
+                <ContactMe ref={contactRef} />
                 <div>
                     <RotatingPicture className="absolute bottom-0" />
                 </div>

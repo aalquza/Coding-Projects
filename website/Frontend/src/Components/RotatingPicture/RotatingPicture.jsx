@@ -12,7 +12,7 @@ export default function RotatingPicture({className, children}) {
       }}>
         <motion.img
           src = {StarImg}
-          className="scale-160 opacity-30 w-auto h-auto max-w-none"
+          className="scale-160 opacity-40 w-auto h-auto max-w-none"
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
         />
