@@ -1,27 +1,3 @@
-// import React from 'react'
-// import MenuOptions from './MenuOptions'
-// import myImage from './../../assets/AA.png'
-// import { twMerge } from 'tailwind-merge'
-// import NavBar from '../NavBar/NavBar'
-
-// export default function HeaderBar({className, onAboutClick, onSkillsClick, onProjectsClick, onContactClick,children}) {
-//   return (
-//     <div className = {twMerge("flex gap-[3vw] relative items-center justify-between p-5 bg-blue/90",className)}>
-//         <div className = " flex items-center bg-transparent">
-//             <img src = {myImage} className = "h-[5vw]"/>
-//             <div className = "font-poppins font-medium text-tan sm:text-[2vw] md:text-[3vw] lg:text-[2vw] -tracking-[.01em]" >
-//                 AHMAD ALQUZA
-//             </div>
-//         </div>
-//         <MenuOptions
-//                 onAboutClick={onAboutClick}
-//                 onSkillsClick={onSkillsClick}
-//                 onProjectsClick={onProjectsClick}
-//                 onContactClick={onContactClick}
-//         />
-//     </div>
-//   )
-// }
 import React, { useState, useEffect } from 'react';
 import MenuOptions from './MenuOptions';
 import myImage from './../../assets/AA.png';

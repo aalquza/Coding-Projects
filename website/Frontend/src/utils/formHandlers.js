@@ -31,12 +31,12 @@ export const formValidate = (formData) => {
 
 
 // Submit function
-export const formSubmit = async (formData, setFormData) => {
+export const formSubmit = async (formData, resetFormData) => {
     try {
         const response = await axios.post('http://localhost:5000/form', formData);
 
         if (response.status === 201) {
-            setFormData({ firstName: '', lastName: '', email: '', question: '' }); // Reset form
+            resetFormData(); // Reset form
             return { success: 'Form submitted successfully!' };  // Return success message
         } else {
             return { server: 'Form submission failed. Please try again later.' };  // Return error
