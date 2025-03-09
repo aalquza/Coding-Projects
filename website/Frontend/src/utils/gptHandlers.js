@@ -13,7 +13,9 @@ export const questionValidate = (question) => {
 
 export const questionSubmit = async (question, setAnswer) => {
     try {
-        const response = await axios.post('http://localhost:5000/question', { question });
+        const response = await axios.post('http://localhost:5000/question', { question }, {
+            withCredentials: true, // Add this line
+        });
 
         if (response.status === 200) {
             let generatedText = response.data.answer;

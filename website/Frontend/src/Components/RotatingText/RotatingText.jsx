@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const texts = ["Where are you working right now?", "Where did you graduate college?", "What do you do for fun?"];
-const waitTime = 8;
+const waitTime = 15;
 
 export default function RotatingText() {
   const [index, setIndex] = useState(0);

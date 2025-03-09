@@ -13,7 +13,7 @@ const AboutMe = React.forwardRef((props, ref) => {
         animate:{opacity:1, x:0, transition:{ duration:1, stiffness:10},},
     }
   return (
-    <div ref={ref} className="flex flex-col items-center justify-center h-auto w-full px-4 py-8 pt-[6vh] sm:px-6 md:px-10 lg:flex-row lg:min-h-screen lg:px-16 md:gap-2 border-5">
+    <div ref={ref} className="flex flex-col items-center justify-center h-auto w-full px-4 py-8 pt-[6vh] sm:px-6 md:px-10 lg:flex-row lg:min-h-screen lg:px-16 md:gap-2">
         {/*Entire Text Section*/}
       <motion.div variants = {TitleMotion} initial = "initial" animate = "animate" className="flex flex-col items-center text-center lg:items-start lg:text-left lg:z-1">
             {/*Hey, I'm Ahmad Section*/}

@@ -1,32 +1,36 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const session = require('express-session');  // Import express-session
+const session = require('express-session');
 require('dotenv').config();
-const { connectDB } = require('./utils/db'); // Use shared DB connection
+const { connectDB } = require('./utils/db');
 const formController = require('./controllers/formController');
 const questionController = require('./controllers/questionController');
 
 const app = express();
-app.use(cors());
+
+// Configure CORS
+app.use(cors({
+    origin: 'http://localhost:5174', // Replace with your client's origin
+    credentials: true, // Allow cookies to be sent
+}));
+
 app.use(bodyParser.json());
 
 // Configure session middleware
 app.use(session({
-    secret: 'your-secret-key',  // A secret key to sign the session ID cookie
-    resave: false,  // Don't save session if it's not modified
-    saveUninitialized: true,  // Create session if none exists
-    cookie: { secure: false }  // For development, set to false; change to true in production with HTTPS
+    secret: 'your-secret-key',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
 }));
 
-connectDB(); // Connect to MongoDB once
+connectDB();
 
-// Form submission
 app.post('/form', (req, res) => {
     formController.submitForm(req, res);
 });
 
-// Question submission
 app.post('/question', (req, res) => {
     questionController.submitQuestion(req, res);
 });
