@@ -33,7 +33,7 @@ export const formValidate = (formData) => {
 // Submit function
 export const formSubmit = async (formData, resetFormData) => {
     try {
-        const response = await axios.post('http://localhost:5000/form', formData);
+        const response = await axios.post('/form', formData);
 
         if (response.status === 201) {
             resetFormData(); // Reset form
