@@ -48,13 +48,13 @@ const Skills = React.forwardRef((props, ref) => {
     }, [hasAnimated]);
 
     return (
-        <div ref={ref} className="flex flex-col w-screen min-h-screen justify-center gap-[8vh] pt-[10vh]">
+        <div ref={ref} className="flex flex-col w-screen min-h-screen justify-center gap-[8vh] pt-[10vh] lg:pt-[15vh]">
             <motion.div
                 ref={sectionRef} // Apply sectionRef directly to the motion.div
                 variants={quoteMotion}
                 initial="initial"
                 animate={hasAnimated ? "animate" : "initial"}
-                className="font-poppins text-tan border-red-orange border-5 rounded-4xl self-center mx-5 px-5 md:px-10 py-5 text-[1rem] md:text-[2rem]"
+                className="font-poppins text-tan border-red-orange border-3 lg:border-5 rounded-4xl self-center mx-3 lg:mx-5 px-5 md:px-10 py-5 text-[1rem] md:text-[2rem]"
             >
                 <span>"A&nbsp; </span>
                 <span className="font-semibold">smooth sea never&nbsp;</span> 

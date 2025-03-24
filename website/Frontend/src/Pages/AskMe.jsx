@@ -87,12 +87,12 @@ const Projects = React.forwardRef((props, ref) => {
 
     return (
         <div ref={ref} className = "z-1">
-            <div ref={sectionRef} className="flex flex-col w-screen items-center justify-center min-h-screen gap-[15vh] p-5 md:p-10 md:pt-[12vh]">
+            <div ref={sectionRef} className="flex flex-col w-screen items-center justify-center min-h-screen gap-[5vh] lg:gap-[15vh] p-3 lg:p-5 md:p-10 md:pt-[12vh]">
                 <motion.div
                     variants={quoteMotion}
                     initial="initial"
                     animate={hasAnimated ? "animate" : "initial"}
-                    className="font-poppins text-tan border-red-orange border-5 rounded-4xl self-center mx-5 px-5 md:px-10 py-5 text-[1rem] md:text-[2rem]"
+                    className="font-poppins text-tan border-red-orange border-3 lg:border-5 rounded-4xl self-center lg:mx-5 px-5 md:px-10 py-5 text-[1rem] md:text-[2rem]"
                 >
                     <span>"The </span>
                     <span className="font-semibold">greater </span>
@@ -107,7 +107,7 @@ const Projects = React.forwardRef((props, ref) => {
                     animate={hasAnimated ? "animate" : "initial"}
                     className="flex flex-col items-center gap-3"
                 >
-                    <div className="flex flex-col items-center gap-[2vh]">
+                    <div className="flex flex-col items-center gap-[2vh] w-screen px-3 sm:w-full">
                         <div className="flex flex-col gap-3 w-[80vw] max-w-200 mb-[1.5rem]">
                             {conversation.map((message, index) => (
                                 <div
@@ -121,7 +121,7 @@ const Projects = React.forwardRef((props, ref) => {
                             ))}
                         </div>
                         {!firstQuestionSubmitted && (
-                            <div className="font-poppins text-tan text-[2rem] md:text-[4rem] font-semibold text-center">
+                            <div className="font-poppins text-tan text-[1.5rem] sm:[2rem] md:text-[4rem] font-semibold text-center">
                                 Ask Me Anything...
                             </div>
                         )}
@@ -129,7 +129,7 @@ const Projects = React.forwardRef((props, ref) => {
                             value={question}
                             onChange={(e) => setQuestion(e.target.value)}
                             showIcon={true}
-                            className="max-w-200 w-[80vw]"
+                            className="max-w-200 w-full lg:w-[80vw]"
                             onClick={handleSubmit}
                         >
                             Ask Anything...

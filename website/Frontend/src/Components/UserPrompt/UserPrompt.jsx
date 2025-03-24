@@ -14,7 +14,7 @@ export default function UserPrompt({ className, children, showIcon = false, valu
     };
 
     return (
-        <div className={twMerge("flex font-poppins text-tan text-[0.75rem] md:text-[1rem] pl-4 pr-2 py-1.5 border-red-orange border-1 rounded-4xl w-full items-center cursor-text", className)}>
+        <div className={twMerge("flex font-poppins text-tan text-[.75rem] md:text-[1rem] pl-4 pr-2 py-3 lg:py-1.5 border-red-orange border-1 rounded-2xl sm:rounded-4xl w-full items-center cursor-text", className)}>
             <textarea
                 value={value}
                 onChange={onChange}

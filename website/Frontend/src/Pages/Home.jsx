@@ -2,7 +2,7 @@ import React from 'react';
 import myImage from './../assets/Profile.png';
 import {motion} from 'framer-motion';
 
-const AboutMe = React.forwardRef((props, ref) => {
+const Home = React.forwardRef((props, ref) => {
     const TitleMotion = {
         initial:{opacity:0, x:"-100vw"},
         animate:{opacity:1, x:0, transition:{duration:1, stiffness:10},},
@@ -41,4 +41,4 @@ const AboutMe = React.forwardRef((props, ref) => {
     </div>
   );
 });
-export default AboutMe;
+export default Home;

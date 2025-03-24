@@ -4,7 +4,7 @@ import myImage from './../../assets/AA.png';
 import { twMerge } from 'tailwind-merge';
 import { motion, useViewportScroll } from 'framer-motion';
 
-export default function HeaderBar({ className, onAboutClick, onSkillsClick, onProjectsClick, onContactClick, children }) {
+export default function HeaderBar({ className, onHomeClick, onSkillsClick, onAskClick, onContactClick, children }) {
   const { scrollY } = useViewportScroll();
   const [visible, setVisible] = useState(true);
 
@@ -37,9 +37,9 @@ export default function HeaderBar({ className, onAboutClick, onSkillsClick, onPr
         </div>
       </div>
       <MenuOptions
-        onAboutClick={onAboutClick}
+        onHomeClick={onHomeClick}
         onSkillsClick={onSkillsClick}
-        onProjectsClick={onProjectsClick}
+        onAskClick={onAskClick}
         onContactClick={onContactClick}
       />
     </motion.div>

@@ -27,7 +27,7 @@ export default function RotatingText() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center md:text-[2rem] font-semibold font-poppins text-tan text-center min-h-[2.5rem]">
+    <div className="flex justify-center items-center text-[.8rem] md:text-[2rem] font-semibold font-poppins text-tan text-center min-h-[2.5rem]">
       <AnimatePresence mode="wait">
         <motion.div
           key={texts[index]}
