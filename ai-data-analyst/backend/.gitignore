@@ -1,0 +1,92 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Virtual environment files
+*.pyenv-version
+.python-version
+
+# IDE and editor files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.sublime-workspace
+*.sublime-project
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Logs and databases
+*.log
+*.sqlite3
+*.sqlite
+*.db
+
+# Cache files
+*.cache
+*.egg-info/
+dist/
+build/
+*.egg
+*.whl
+
+# Coverage reports
+.coverage
+htmlcov/
+*.cover
+
+# Testing
+.pytest_cache/
+.tox/
+nosetests.xml
+
+# Documentation
+docs/_build/
+
+# Sensitive data
+secrets.py
+*.key
+*.pem
+*.crt
+*.cer
+*.jks
+*.p12
+
+# Local development files
+local_settings.py
+settings.ini
+
+# Misc
+*.bak
+*.swp
+*.orig
+*~
+
+# User-specific files
+*.userprefs
+
+# Project specific (add as needed)
+/uploads/
+/media/
+/tmp/

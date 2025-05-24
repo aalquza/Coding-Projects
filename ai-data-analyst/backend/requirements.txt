@@ -1,3 +1,6 @@
+flask
 pandas
-openai
-RestrictedPython
+pandasai
+langchain-openai==0.1.7
+langchain==0.1.14
+openai==1.30.1

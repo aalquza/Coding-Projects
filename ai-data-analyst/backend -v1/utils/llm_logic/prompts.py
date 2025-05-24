@@ -20,10 +20,18 @@ ACTION_SELECTION_PROMPT = PromptTemplate(
 
         ---
 
+        Uncertainties Guidelines:
+        - List all uncertainties in the `uncertainties` field (e.g., ambiguous user requests, unvalidated assumptions).
+        - If an uncertainty could impact the next action, add a note in `reasoning` (e.g., "Assuming X due to lack of user clarification").
+        - Set `uncertainty_resolved: True` only if the next step will definitively resolve the uncertainty (e.g., generating code to validate a hypothesis).
+        - For high-priority uncertainties, use `next_node_instructions` to explicitly address them (e.g., "Include a correlation plot to resolve uncertainty about feature importance").
+
+        ---
+
         Available Actions:
 
         **response**: Communicate with the user directly.
-            - `clarification_request`: Ask a focused question.
+            - `clarification_request`: Ask a focused question to resolve uncertainties.
             - `explanation`: Provide a brief explanation.
             - `summary`: Briefly recap progress.
             - `follow_up`: Suggest a simple next step.
@@ -33,39 +41,30 @@ ACTION_SELECTION_PROMPT = PromptTemplate(
             - `transform`: Change the data. Provide a description of the transformation.
             - `analyze`: Get insights from the data. Provide a description of the analysis.
 
-        Focus on the immediate next step and describe it clearly and concisely in the `next_node_instructions`. Only include `previous_code` in `next_node_instructions` if the `sub_intent` of `generate_code` includes 'fix'.
-
         ---
 
-        Select the next `action` and `sub_intent`, explain your reasoning (especially if addressing an error), and provide a simple, specific description for the next node in the `next_node_instructions` field. Include `previous_code` in `next_node_instructions` only when the `sub_intent` of `generate_code` includes 'fix'.
-
         Return a JSON object:
-
         ```json
-        {
-            "action": "...",
+        {{
+            "action": "generate_code|response",
             "sub_intent": "...",
-            "reasoning": "...",
-            "uncertainties": ["..."],
+            "reasoning": "Logical explanation of your choice, including how uncertainties are handled",
+            "uncertainties": ["list of unclear aspects"],
             "uncertainty_resolved": false,
             "entities_validated": false,
-            "key_entities": ["..."],
-            "next_node_instructions": {
-                "description": "A brief, specific, and clear description of the next action to be taken.",
-                "is_fix": true
-                "previous_code": {
-                "code": "...",
-                "error": "...",
-                "output": "..."
-                },
-            }
-            
-        }
+            "key_entities": ["relevant data columns/values"],
+            "next_node_instructions": {{
+                "description": "Specific task for next node using verified entities. Include uncertainty resolution steps if needed (NEW)",
+                "is_fix": true|false,
+                "previous_code": "only if sub_intent includes 'fix'",
+                "code_output": "previous code output if relevant",
+                "error": "error message if fixing code"
+            }}
+        }}
         ```
         """
     ),
 )
-
 RESPONSE_PROMPT = PromptTemplate(
     input_variables=["state"],
     template=(
@@ -82,11 +81,11 @@ RESPONSE_PROMPT = PromptTemplate(
 CODE_PROMPT = PromptTemplate(
     input_variables=["state"],
     template=(
-        "You are a data analyst. Your goal is to write python code to address the current state"
-        "Current state {state}\n\n"
+        "You are a data analyst. Your goal is to write python code."
+        "Task: {state}\n\n"
         "Respond with a clear brief sequential plan to address the next_node_instructions and use short natural language bullet points.\n"
         "- Only plan specifics and be minimal\n"
-        "- If the valid entities or uncertainties are not resolved, include that in the plan."
+        "- If the valid entities or uncertainties are not resolved, focus only on resolving them in this plan."
         "- Avoid unnecessary complexity and jargon.\n"
         "Then, write the code to implement that plan.\n"
         "- Wrap the executable code using the code blocks.\n"
